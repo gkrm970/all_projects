@@ -1,0 +1,51 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: {{ .Values.service_name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+  triggers:
+    - type: ConfigChange
+  replicas: 1
+  selector:
+    app: {{ .Values.service_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service_name }}
+    spec:
+      volumes:
+        - name: {{ .Values.service_name }}-data
+          persistentVolumeClaim:
+            claimName: {{ .Values.pvc_name }}
+      containers:
+        # The following resources are specific to your pod requirements
+        - resources: {}
+            # limits:
+            #   cpu: 200m
+            #   memory: 512Mi
+            # requests:
+            #   cpu: 50m
+            #   memory: 256Mi
+          name: {{ .Values.service_name }}
+          image: {{ .Values.image_name }}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: {{ .Values.service_name }}-data
+              mountPath: /data
+
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler

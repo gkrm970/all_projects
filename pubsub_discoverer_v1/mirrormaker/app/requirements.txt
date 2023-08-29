@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+starlette==0.24.0
+starlette-context==0.2.3
+starlette-exporter==0.4.1
+confluent-kafka==2.0.2
+tenacity
+pytest
+jwt
+tinaa-utils
+tinaa-logger
+python-jose
