@@ -1,0 +1,148 @@
+version: "3.3"
+services:
+  backend:
+    image: '${DOCKER_IMAGE_BACKEND-backend}:${TAG-latest}'
+    extra_hosts:
+      abe-kafka-broker-01: "172.25.208.114"
+      pltf-msgbus.develop.ocp01.toll6.tinaa.tlabs.ca: "172.25.116.204"
+      btln008898.corp.ads: "100.66.158.34"
+      btln008899.corp.ads: "100.66.158.35"
+      btln008900.corp.ads: "100.66.158.36"
+      btln008903.corp.ads: "100.66.158.39"
+    ports:
+      - "8088:80"
+    env_file:
+      - .env
+    environment:
+      - SERVER_NAME=${DOMAIN-localhost}
+      - SERVER_HOST=https://${DOMAIN-localhost}
+      # Allow explicit env var override for tests
+      - MIRROR_MAKER_URL=http://${MM_SERVICE_NAME}:${MM_SERVICE_PORT}
+      - PUSH_SERVICE_URL=http://${PUSH_SERVICE_NAME}:${PUSH_SERVICE_PORT}
+      - DB_SERVER=${DB_SERVER}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - MAX_MESSAGES_TO_PUBLISH=${MAX_MESSAGES_TO_PUBLISH}
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.constraint-label-stack=${TRAEFIK_TAG}
+        - traefik.http.routers.${STACK_NAME-tinaa}-backend-http.rule=PathPrefix(`/pubsub_discoverer`)
+        - traefik.http.services.${STACK_NAME-tinaa}-backend.loadbalancer.server.port=8080
+    labels: []
+
+  mirrormaker:
+    image: '${DOCKER_IMAGE_MIRRORMAKER}:${TAG-latest}'
+    extra_hosts:
+      abe-kafka-broker-01: "172.25.208.114"
+      pltf-msgbus.develop.ocp01.toll6.tinaa.tlabs.ca: "172.25.116.204"
+      btln008898.corp.ads: "100.66.158.34"
+      btln008899.corp.ads: "100.66.158.35"
+      btln008900.corp.ads: "100.66.158.36"
+      btln008903.corp.ads: "100.66.158.39"
+    env_file:
+      - .env
+    ports:
+      - "8086:8086"
+    environment:
+      - MM_SERVICE_PORT=${MM_SERVICE_PORT}
+      - TINAA_KAFKA_LIST=${TINAA_KAFKA_LIST}
+      - SERVICE_PROTOCOL=${SERVICE_PROTOCOL}
+      - SERVICE_HOST=${SERVICE_HOST}
+      - SERVICE_PORT=${SERVICE_PORT}
+      - SERVICE_ENDPOINT=${SERVICE_ENDPOINT}
+      - AUTH_TOKEN_URL=${SERVICE_AUTH_TOKEN_URL}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+    build:
+      context: ./mirrormaker
+      dockerfile: mirrormaker.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.constraint-label-stack=${TRAEFIK_TAG}
+        - traefik.http.routers.${STACK_NAME-tinaa}-backend-http.rule=PathPrefix(`/pubsub_discoverer`)
+        - traefik.http.services.${STACK_NAME-tinaa}-backend.loadbalancer.server.port=8080
+    labels: []
+
+  discovery-plugin:
+    image: '${DOCKER_IMAGE_DISCOVERY_PLUGIN}:${TAG-latest}'
+    extra_hosts:
+      abe-kafka-broker-01: "172.25.208.114"
+      pltf-msgbus.develop.ocp01.toll6.tinaa.tlabs.ca: "172.25.116.204"
+      btln008903.corp.ads: "100.66.158.39"
+      btln008898.corp.ads: "100.66.158.34"
+      btln008899.corp.ads: "100.66.158.35"
+      btln008900.corp.ads: "100.66.158.36"
+    env_file:
+      - .env
+    environment:
+      - SERVICE_PROTOCOL=${SERVICE_PROTOCOL}
+      - SERVICE_HOST=${SERVICE_HOST}
+      - SERVICE_PORT=${SERVICE_PORT}
+      - SERVICE_ENDPOINT=${SERVICE_ENDPOINT}
+      - AUTH_TOKEN_URL=${SERVICE_AUTH_TOKEN_URL}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+    build:
+      context: ./discovery-plugin
+      dockerfile: discovery-plugin.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+#    deploy:
+#      labels:
+#        - traefik.enable=true
+#        - traefik.constraint-label-stack=${TRAEFIK_TAG}
+#        - traefik.http.routers.${STACK_NAME-tinaa}-backend-http.rule=PathPrefix(`/pubsub_discoverer`)
+#        - traefik.http.services.${STACK_NAME-tinaa}-backend.loadbalancer.server.port=8080
+#    labels: []
+
+  push-plugin:
+    image: '${DOCKER_IMAGE_PUSH_PLUGIN}:${TAG-latest}'
+    extra_hosts:
+      abe-kafka-broker-01: "172.25.208.114"
+      pltf-msgbus.develop.ocp01.toll6.tinaa.tlabs.ca: "172.25.116.204"
+      btln008898.corp.ads: "100.66.158.34"
+      btln008899.corp.ads: "100.66.158.35"
+      btln008900.corp.ads: "100.66.158.36"
+      btln008903.corp.ads: "100.66.158.39"
+    env_file:
+      - .env
+    environment:
+      - DEBUG="True"
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL}
+      - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND}
+      - PUSH_SERVICE_PORT=${PUSH_SERVICE_PORT}
+      - SERVICE_PROTOCOL=${SERVICE_PROTOCOL}
+      - SERVICE_HOST=${SERVICE_HOST}
+      - SERVICE_PORT=${SERVICE_PORT}
+      - SERVICE_ENDPOINT=${SERVICE_ENDPOINT}
+      - AUTH_TOKEN_URL=${SERVICE_AUTH_TOKEN_URL}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - MAX_CONSUMERS=${MAX_CONSUMERS}
+    depends_on:
+      - redis
+    build:
+      context: ./push-plugin
+      dockerfile: push-plugin.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+
+  redis:
+    restart: unless-stopped
+    image: redis:7.0.11-alpine 
+    expose:
+        - 6379
+  
+volumes:
+  app-db-data:

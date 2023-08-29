@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="71b186db-5f24-4092-a1bb-b440747bbd94" name="Changes" comment="Add Pytest testcases" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="cookiecutter-mm2-test" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="Pytest-cases added." />
+        <option name="rewordedMessage" value="Add Pytest testcases" />
+      </RewordedCommitMessageMapping>
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value=" Updated the file structure under test folder." />
+        <option name="rewordedMessage" value="Update the file structure under test folder" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="618a72c5f2c092e7a8297d35fbf423a94b183e9d" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2USMaInDMxDU60Y6cQ9XHFCosaX" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "cookiecutter-test-demo",
+    "last_opened_file_path": "D:/Telus/pubsub_discoverer/push-plugin",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Telus\pubsub_discoverer\backend\app\app\tests\api\api_v1\test_mirrormaker_endpoints" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71b186db-5f24-4092-a1bb-b440747bbd94" name="Changes" comment="" />
+      <created>1692928590478</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692928590478</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Pytest-cases added.">
+      <option name="closed" value="true" />
+      <created>1692942609970</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1692942609970</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/cookiecutter-test-demo' into cookiecutter-test-demo&#10;&#10;# Conflicts:&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_delete_mirror_maker_record_by_id.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_delete_topic.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_get_all_mirror_maker_records.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_get_mirror_maker_record_by_id.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_get_mirror_maker_record_by_subscription_name.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_patch_mirror_maker_record_by_id.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_start_mirror_maker_post.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_update_mirror_maker_record_by_id.py">
+      <option name="closed" value="true" />
+      <created>1692943327439</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692943327439</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update pytests">
+      <option name="closed" value="true" />
+      <created>1692962808026</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692962808026</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update pytests">
+      <option name="closed" value="true" />
+      <created>1692962881446</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692962881446</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add Pytest testcases">
+      <option name="closed" value="true" />
+      <created>1692971660979</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692971660979</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/cookiecutter-mm2-test" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/cookiecutter-mm2-test" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=" Updated the file structure under test folder." />
+    <MESSAGE value="Pytest-cases added." />
+    <MESSAGE value="Merge remote-tracking branch 'origin/cookiecutter-test-demo' into cookiecutter-test-demo&#10;&#10;# Conflicts:&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_delete_mirror_maker_record_by_id.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_delete_topic.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_get_all_mirror_maker_records.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_get_mirror_maker_record_by_id.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_get_mirror_maker_record_by_subscription_name.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_patch_mirror_maker_record_by_id.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_start_mirror_maker_post.py&#10;#&#9;backend/app/app/tests/api/api_v1/mirrormaker_endpoints/test_update_mirror_maker_record_by_id.py" />
+    <MESSAGE value="Update pytests" />
+    <MESSAGE value="Add Pytest testcases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Pytest testcases" />
+  </component>
+</project>
